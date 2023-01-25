@@ -1,5 +1,7 @@
 import "@matterlabs/hardhat-zksync-deploy";
 import "@matterlabs/hardhat-zksync-solc";
+import "@matterlabs/hardhat-zksync-verify";
+require("dotenv").config();
 
 module.exports = {
     zksolc: {

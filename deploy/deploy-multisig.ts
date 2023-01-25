@@ -7,7 +7,7 @@ const AA_FACTORY_ADDRESS = "AA_FACTORY_ADDRESS_HERE";
 
 export default async function (hre: HardhatRuntimeEnvironment) {
     const provider = new Provider("https://zksync2-testnet.zksync.dev");
-    const wallet = new Wallet("EOA_PRIVATE_KEY_HERE").connect(provider);
+    const wallet = new Wallet(new ethers.utils.SigningKey(process.env.PRIVATE_KEY || 'NULL'));
     const factoryArtifact = await hre.artifacts.readArtifact("AAFactory");
 
     const aaFactory = new ethers.Contract(AA_FACTORY_ADDRESS, factoryArtifact.abi, wallet);

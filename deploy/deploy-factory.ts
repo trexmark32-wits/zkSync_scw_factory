@@ -4,7 +4,7 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { Deployer } from "@matterlabs/hardhat-zksync-deploy";
 
 export default async function (hre: HardhatRuntimeEnvironment) {
-    const wallet = new Wallet("EOA_PRIVATE_KEY_HERE");
+    const wallet = new Wallet(new ethers.utils.SigningKey(process.env.PRIVATE_KEY || 'NULL'));
     const deployer = new Deployer(hre, wallet);
     const factoryArtifact = await deployer.loadArtifact("AAFactory");
     const aaArtifact = await deployer.loadArtifact("TwoUserMultisig");
